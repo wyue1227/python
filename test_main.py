@@ -1,6 +1,7 @@
 import unittest
 
-from main import 五行, 天干, 阴阳, 十神, 相生关系, 五行处理, 流年处理
+from 流年流月 import 十神, 流年流月处理
+from 阴阳五行 import 天干, 五行, 相生关系, 五行处理
 
 # 测试代码
 class Test五行处理(unittest.TestCase):
@@ -35,7 +36,9 @@ class Test五行处理(unittest.TestCase):
 class Test流年处理(unittest.TestCase):
 
     def test_流年运势计算(self):
-        self.assertEqual(流年处理.流年运势计算(天干(五行.木, 阴阳.阳), 天干(五行.水, 阴阳.阴)), 十神.伤官)
+        阳木 = 天干.get("甲")
+        阴水 = 天干.get("癸")
+        self.assertEqual(流年流月处理.流年运势计算(阴水, 阳木), 十神.伤官)
 
 if __name__ == '__main__':
     unittest.main()
